@@ -32,11 +32,11 @@ bot.on('message', async message => {
   if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
     if (message.content === "我同意") {
-      if (message.member.roles.has("536784689650991104")) {
+      if (message.member.roles.has("536938835540574208")) {
           message.channel.send("你已經同意了").then(message => message.delete(5000))
           message.delete()
       } else {
-          message.member.addRole('411897336621432832').then(message.channel.send("已給予身分組").then(message => message.delete(5000)))
+          message.member.addRole('536938835540574208').then(message.channel.send("已給予身分組").then(message => message.delete(5000)))
           message.delete()
       }
     } else {
