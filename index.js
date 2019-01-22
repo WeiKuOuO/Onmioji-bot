@@ -31,9 +31,9 @@ bot.on('ready', function() {
 bot.on('message', async message => {
   if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
-    if (!message.content === "!join") {
+    if (!message.content == "!join") {
       message.channel.send("請輸入\"我同意\"").then(message => message.delete(5000));
-      message.delete()
+      message.delete().catch(O_o=>{});
     }
   }
 })
