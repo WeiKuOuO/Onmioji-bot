@@ -47,9 +47,6 @@ bot.on('ready', function() {
 });
 
 bot.on('message', async message => {
-  // TEST
-  if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
 
   if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
@@ -60,13 +57,9 @@ bot.on('message', async message => {
       message.delete().catch(O_o=>{});
     }
   }
-})
-
-// 單字簡化
-const sender = message.author;
+  // 單字簡化
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
-const msg = message.content.toUpperCase();
 
 if(command === "join"){
   message.delete().catch(O_o=>{});
@@ -80,7 +73,10 @@ if(command === "join"){
       .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
 
   bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
-}
+  }
+})
+
+
   
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
