@@ -45,7 +45,7 @@ bot.on('message', async message => {
     }
   }
 })
-
+ 
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
   bot.channels.filter(c => c.name=="像素機器人資訊").forEach(c => c.bulkDelete("50"))
