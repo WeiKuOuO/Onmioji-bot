@@ -50,7 +50,7 @@ bot.on('message', async message => {
 
   if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
-    if (message.content == "!join" || "!JOIN") {
+    if (message.content == "!join" ) {
       message.channel.send("成功加入成員!").then(message => message.delete(5000));
     }else{
       message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
@@ -65,7 +65,7 @@ if(command === "join"){
   message.delete().catch(O_o=>{});
   const joinmessage = new Discord.RichEmbed()
       .setAuthor(bot.user.username)
-      .setTitle("歡迎來到")
+      .setTitle("加入須知")
       .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
       .setColor(0x00FF04)
       .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度\`\`\`", true)
