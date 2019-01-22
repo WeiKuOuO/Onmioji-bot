@@ -16,6 +16,9 @@ bot.commands = new Discord.Collection();
 
 let index = 0;
 
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+
 bot.on("message", async message => {
 
   //command handler
