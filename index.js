@@ -39,6 +39,20 @@ bot.on('message', async message => {
     }
   }
 })
+
+if(command === "join"){
+  message.delete().catch(O_o=>{});
+  const statusmessage = new Discord.RichEmbed()
+      .setAuthor(bot.user.username)
+      .setTitle("歡迎來到")
+      .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
+      .setColor(0x00FF04)
+      .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度", true)
+      .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
+      .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
+
+  bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send().then(m => statusMessages.push(m)));
+}
  
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
