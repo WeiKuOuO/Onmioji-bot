@@ -29,12 +29,13 @@ bot.on('ready', function() {
 });
 
 bot.on('message', async message => {
-  if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
-    if (!message.content == "!join") {
-      message.channel.send("請輸入\"我同意\"").then(message => message.delete(5000));
+    if (message.content == "!join") {
+      message.channel.send("成功加入成員!").then(message => message.delete(5000));
+    }else
+      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
       message.delete().catch(O_o=>{});
-    }
+    {
   }
 })
  
