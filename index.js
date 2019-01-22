@@ -51,11 +51,6 @@ bot.on('message', async message => {
   if(message.author.bot) return;
   if(message.content.indexOf(prefix) !== 0) return;
 
-  // 單字簡化
-  const sender = message.author;
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-  const msg = message.content.toUpperCase();
   if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
     if (message.content == "!join" || "!JOIN") {
@@ -67,9 +62,15 @@ bot.on('message', async message => {
   }
 })
 
+// 單字簡化
+const sender = message.author;
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+const msg = message.content.toUpperCase();
+
 if(command === "join"){
   message.delete().catch(O_o=>{});
-  const statusmessage = new Discord.RichEmbed()
+  const joinmessage = new Discord.RichEmbed()
       .setAuthor(bot.user.username)
       .setTitle("歡迎來到")
       .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
@@ -78,7 +79,7 @@ if(command === "join"){
       .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
       .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
 
-  bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send().then(m => statusMessages.push(m)));
+  bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
 }
   
 bot.on("ready", async () => {
