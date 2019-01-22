@@ -1,4 +1,4 @@
-var figlet = require('figlet');
+var discord = require('discord.js');
 
 module.exports.run = (bot, message, args, tools) => {
     if (args[0] == green){
