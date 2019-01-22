@@ -17,18 +17,6 @@ bot.commands = new Discord.Collection();
 let index = 0;
 
 bot.on("message", async message => {
-  // TEST
-  if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
-
-  // 單字簡化
-  const sender = message.author;
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-  const msg = message.content.toUpperCase();
-})
-
-bot.on("message", async message => {
 
   //command handler
 	if (message.author.bot || message.channel.type === 'dm') return;
@@ -59,6 +47,15 @@ bot.on('ready', function() {
 });
 
 bot.on('message', async message => {
+  // TEST
+  if(message.author.bot) return;
+  if(message.content.indexOf(prefix) !== 0) return;
+
+  // 單字簡化
+  const sender = message.author;
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  const msg = message.content.toUpperCase();
   if (message.author.bot) return
   if (message.channel.id == "536784689650991104") {
     if (message.content == "!join" || "!JOIN") {
