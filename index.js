@@ -67,6 +67,7 @@ if(command === "join"){
       .setAuthor(bot.user.username)
       .setTitle("加入須知")
       .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
+      .setThumbnail("https://i.imgur.com/ONd2mYc.png")
       .setColor(0x00FF04)
       .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度\`\`\`", true)
       .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
