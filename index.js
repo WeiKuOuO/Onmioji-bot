@@ -19,18 +19,7 @@ let index = 0;
 
 
 bot.on('message', async message => {
-
-  if (message.author.bot) return
-  if (message.channel.id == "536784689650991104") {
-    if (message.content == "!join" ) {
-      message.channel.send("成功加入成員!").then(message => message.delete(5000));
-    }else{
-      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
-      message.delete().catch(O_o=>{});
-    }
-  }
-
-// if(command === "join"){
+  // if(command === "join"){
 //   message.delete().catch(O_o=>{});
 //   const joinmessage = new Discord.RichEmbed()
 //       .setAuthor(bot.user.username)
@@ -45,9 +34,6 @@ bot.on('message', async message => {
 //   bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
 })
 
-
-
-  
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
   bot.channels.filter(c => c.name=="像素機器人資訊").forEach(c => c.bulkDelete("50"))
@@ -95,21 +81,6 @@ bot.on("ready", async () => {
   },2200)
   })
 
-  //command handler
-	if (message.author.bot || message.channel.type === 'dm') return;
-	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-	try{
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(bot, message, args);
-	}catch(err){
-		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
-  }
-  if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
-
-
   fs.readdir("./commands/", (err,files) => {
     if(err) console.log(err);
     let jsfile = files.filter(f => f.split(".").pop() === "js")
@@ -148,4 +119,32 @@ bot.on('ready', function() {
     if (index === statuslist.length) index = 0;
 }, 3000)
 });
+
+bot.on('message', async message => {
+
+  //command handler
+	if (message.author.bot || message.channel.type === 'dm') return;
+	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+	try{
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(bot, message, args);
+	}catch(err){
+		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
+  }
+  if(message.author.bot) return;
+  if(message.content.indexOf(prefix) !== 0) return;
+
+  if (message.channel.id == "536784689650991104") {
+    if (message.content == "!join" ) {
+      message.channel.send("成功加入成員!").then(message => message.delete(5000));
+    }else{
+      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
+      message.delete().catch(O_o=>{});
+    }
+  }
+
+})
+
 bot.login(token);
