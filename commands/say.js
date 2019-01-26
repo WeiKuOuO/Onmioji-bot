@@ -1,7 +1,7 @@
 var discord = require('discord.js');
 
 module.exports.run = (bot, message, args) => {
-    if(args[0] == 'green', function(err, data) {
+    if(args[01] == "green", function(err, data) {
         if (err) {
             console.log(err);
             return;
