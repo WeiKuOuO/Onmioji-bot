@@ -61,21 +61,21 @@ bot.on('message', async message => {
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
 
-if(command === "join"){
-  message.delete().catch(O_o=>{});
-  const joinmessage = new Discord.RichEmbed()
-      .setAuthor(bot.user.username)
-      .setTitle("加入須知")
-      .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
-      .setThumbnail("https://i.imgur.com/ONd2mYc.png")
-      .setColor(0x00FF04)
-      .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度\`\`\`", true)
-      .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
-      .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
+// if(command === "join"){
+//   message.delete().catch(O_o=>{});
+//   const joinmessage = new Discord.RichEmbed()
+//       .setAuthor(bot.user.username)
+//       .setTitle("加入須知")
+//       .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
+//       .setThumbnail("https://i.imgur.com/ONd2mYc.png")
+//       .setColor(0x00FF04)
+//       .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度\`\`\`", true)
+//       .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
+//       .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
 
-  bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
-  }
+//   bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
 })
+
 
 
   
