@@ -2,6 +2,11 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
+    let list = [
+        "ghostblade1"
+    ]
+    
+    if(!args[0] == list || "list") message.channel.send("lol you")
     if(args[1] == "list"){
         message.channel.send('hi ghostblade1')
     }
