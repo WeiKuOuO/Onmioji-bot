@@ -16,35 +16,7 @@ bot.commands = new Discord.Collection();
 
 let index = 0;
 
-bot.on("message", async message => {
 
-  //command handler
-	if (message.author.bot || message.channel.type === 'dm') return;
-	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-	try{
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(bot, message, args);
-	}catch(err){
-		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
-  }
-  if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
-
-})
-
-bot.on('ready', function() {
-  const statuslist = [
-      `pixel/help | 任何問題請WeiKu#3402 ♪`,
-      `機器人製作 | 微苦 ♪`,
-  ];
-  bot.setInterval(() => {
-    bot.user.setActivity(statuslist[index], { type: "STREAMING", url: "https://www.twitch.tv/weikuouo"});
-    index++
-    if (index === statuslist.length) index = 0;
-}, 3000)
-});
 
 bot.on('message', async message => {
 
@@ -57,9 +29,6 @@ bot.on('message', async message => {
       message.delete().catch(O_o=>{});
     }
   }
-  // 單字簡化
-const args = message.content.slice(prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
 
 // if(command === "join"){
 //   message.delete().catch(O_o=>{});
@@ -126,14 +95,27 @@ bot.on("ready", async () => {
   },2200)
   })
 
+  //command handler
+	if (message.author.bot || message.channel.type === 'dm') return;
+	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+	try{
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(bot, message, args);
+	}catch(err){
+		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
+  }
+  if(message.author.bot) return;
+  if(message.content.indexOf(prefix) !== 0) return;
 
 
-fs.readdir("./commands/", (err,files) => {
-  if(err) console.log(err);
-  let jsfile = files.filter(f => f.split(".").pop() === "js")
-  if(jsfile.length <= 0){
-    console.log("找不到任何指令");
-    return;
+  fs.readdir("./commands/", (err,files) => {
+    if(err) console.log(err);
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if(jsfile.length <= 0){
+      console.log("找不到任何指令");
+      return;
   }
 
   jsfile.forEach((f, i) => {
@@ -141,6 +123,7 @@ fs.readdir("./commands/", (err,files) => {
     console.log(`${f} 載入成功!`)
     bot.commands.set(props.help.name, props);
   })
+
 })
 
 
@@ -154,5 +137,15 @@ bot.on("guildDelete", guild => {
   console.log(`退出群組 ${guild.name} [ ${guild.memberCount} ] (id: ${guild.id})`);
 });
 
-
+bot.on('ready', function() {
+  const statuslist = [
+      `pixel/help | 任何問題請WeiKu#3402 ♪`,
+      `機器人製作 | 微苦 ♪`,
+  ];
+  bot.setInterval(() => {
+    bot.user.setActivity(statuslist[index], { type: "STREAMING", url: "https://www.twitch.tv/weikuouo"});
+    index++
+    if (index === statuslist.length) index = 0;
+}, 3000)
+});
 bot.login(token);
