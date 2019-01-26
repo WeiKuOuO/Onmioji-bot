@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
-    let list = [
+    const list = [
         "ghostblade1"
     ]
     
