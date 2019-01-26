@@ -11,5 +11,5 @@ module.exports.run = (bot, message, args, tools) => {
     }
 }
 module.exports.help = {
-  name: 'say',
+  name: "say",
 };
