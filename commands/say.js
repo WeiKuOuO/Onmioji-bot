@@ -1,11 +1,7 @@
 var discord = require('discord.js');
 
 module.exports.run = (bot, message, args) => {
-    if(args[01] == "green"){
-        if (err) {
-            console.log(err);
-            return;
-        }
+    if(args[1] == "green"){
         const text = args.slice(1).join(" ")
         message.delete().catch(O_o=>{});
         message.channel.send({embed: {
