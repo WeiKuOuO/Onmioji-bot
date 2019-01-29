@@ -123,8 +123,8 @@ bot.on('ready', function() {
 bot.on('message', async message => {
 
   //command handler
-	if (message.author.bot || message.channel.type === 'dm') return;
-	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
+    if (message.author.bot || message.channel.type === 'dm') return;
+    if (message.content.toLowerCase().indexOf(prefix) !== 0) return
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 	try{
@@ -133,7 +133,6 @@ bot.on('message', async message => {
 	}catch(err){
 		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
   }
-  if(message.author.bot) return;
   if(message.content.indexOf(prefix) !== 0) return;
 
   if (message.channel.id == "536784689650991104") {
