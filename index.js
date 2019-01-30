@@ -121,6 +121,14 @@ bot.on('ready', function() {
 });
 
 bot.on('message', async message => {
+  if (message.channel.id == "536784689650991104") {
+    if (message.content == "!join" ) {
+      message.channel.send("成功加入成員!").then(message => message.delete(5000));
+    }else{
+      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
+      message.delete().catch(O_o=>{});
+    }
+  }
 
   //command handler
     if (message.author.bot || message.channel.type === 'dm') return;
@@ -134,15 +142,6 @@ bot.on('message', async message => {
 		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
   }
   if(message.content.indexOf(prefix) !== 0) return;
-
-  if (message.channel.id == "536784689650991104") {
-    if (message.content == "!join" ) {
-      message.channel.send("成功加入成員!").then(message => message.delete(5000));
-    }else{
-      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
-      message.delete().catch(O_o=>{});
-    }
-  }
 
 })
 
