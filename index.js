@@ -124,9 +124,12 @@ bot.on('message', async message => {
   if (message.channel.id == "536784689650991104") {
     if (message.content == "!join" ) {
       message.channel.send("成功加入成員!").then(message => message.delete(5000));
+      message.delete().catch(O_o=>{});
+      return;
     }else{
       message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
       message.delete().catch(O_o=>{});
+      return;
     }
   }
 
