@@ -19,6 +19,7 @@ let index = 0;
 
 
 bot.on("message", async message => {
+  if (message.author.bot || message.channel.type === 'dm') return;
   if (message.channel.id == "536784689650991104") {
     if (message.content == "!join" ) {
       message.channel.send("成功加入成員!").then(message => message.delete(5000));
@@ -30,7 +31,6 @@ bot.on("message", async message => {
   }
 
   //command handler
-	if (message.author.bot || message.channel.type === 'dm') return;
 	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
