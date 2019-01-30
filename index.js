@@ -1,3 +1,4 @@
+
 const Discord = require('discord.js');
 const fs = require("fs");
 const { version } = require("discord.js");
@@ -6,11 +7,15 @@ const m = require("moment-duration-format");
 let os = require('os')
 let cpuStat = require("cpu-stat")
 const ms = require("ms")
+
 const token = process.env.token
 const prefix = process.env.prefix
+
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
+
 let index = 0;
+
 
 
 bot.on('message', async message => {
@@ -26,7 +31,6 @@ bot.on('message', async message => {
   }
 
 // if(command === "join"){
-  // if(command === "join"){
 //   message.delete().catch(O_o=>{});
 //   const joinmessage = new Discord.RichEmbed()
 //       .setAuthor(bot.user.username)
@@ -37,12 +41,13 @@ bot.on('message', async message => {
 //       .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度\`\`\`", true)
 //       .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
 //       .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
+
 //   bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
 })
 
 
 
-
+  
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
   bot.channels.filter(c => c.name=="像素機器人資訊").forEach(c => c.bulkDelete("50"))
@@ -112,18 +117,26 @@ bot.on("ready", async () => {
       console.log("找不到任何指令");
       return;
   }
+
   jsfile.forEach((f, i) => {
     let props = require(`./commands/${f}`);
     console.log(`${f} 載入成功!`)
     bot.commands.set(props.help.name, props);
   })
+
 })
+
+
+
+
 bot.on("guildCreate", guild => {
   console.log(`加入群組 ${guild.name} [ ${guild.memberCount} ](id: ${guild.id})`);
 });
+
 bot.on("guildDelete", guild => {
   console.log(`退出群組 ${guild.name} [ ${guild.memberCount} ] (id: ${guild.id})`);
 });
+
 bot.on('ready', function() {
   const statuslist = [
       `pixel/help | 任何問題請WeiKu#3402 ♪`,
@@ -135,32 +148,4 @@ bot.on('ready', function() {
     if (index === statuslist.length) index = 0;
 }, 3000)
 });
-
-bot.on('message', async message => {
-
-  //command handler
-	if (message.author.bot || message.channel.type === 'dm') return;
-	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-	try{
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(bot, message, args);
-	}catch(err){
-		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
-  }
-  if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
-
-  if (message.channel.id == "536784689650991104") {
-    if (message.content == "!join" ) {
-      message.channel.send("成功加入成員!").then(message => message.delete(5000));
-    }else{
-      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
-      message.delete().catch(O_o=>{});
-    }
-  }
-
-}) 
-
 bot.login(token);
