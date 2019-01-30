@@ -18,18 +18,17 @@ let index = 0;
 
 
 
-bot.on('message', async message => {
-
-  if (message.author.bot) return
+bot.on("message", async message => {
   if (message.channel.id == "536784689650991104") {
     if (message.content == "!join" ) {
       message.channel.send("成功加入成員!").then(message => message.delete(5000));
+      message.delete().catch(O_o=>{});
     }else{
       message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
       message.delete().catch(O_o=>{});
     }
   }
-
+})
 // if(command === "join"){
 //   message.delete().catch(O_o=>{});
 //   const joinmessage = new Discord.RichEmbed()
@@ -43,7 +42,7 @@ bot.on('message', async message => {
 //       .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
 
 //   bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
-})
+
 
 
 
