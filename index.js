@@ -28,6 +28,20 @@ bot.on("message", async message => {
       message.delete().catch(O_o=>{});
     }
   }
+
+  //command handler
+	if (message.author.bot || message.channel.type === 'dm') return;
+	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+	try{
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(bot, message, args);
+	}catch(err){
+		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
+  }
+  if(message.content.indexOf(prefix) !== 0) return;
+
 })
 // if(command === "join"){
 //   message.delete().catch(O_o=>{});
@@ -93,20 +107,6 @@ bot.on("ready", async () => {
     });
   },2200)
   })
-
-  //command handler
-	if (message.author.bot || message.channel.type === 'dm') return;
-	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-	try{
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(bot, message, args);
-	}catch(err){
-		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
-  }
-  if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
 
 
   fs.readdir("./commands/", (err,files) => {
