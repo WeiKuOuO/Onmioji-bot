@@ -2,13 +2,14 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
+    if(args[0] == "list"){
+        message.channel.send("test")
+    }
+
     if(args[1] == "ghostblade1"){
-        message.channel.send('https://i.imgur.com/13mrLGm.png')
+        message.channel.send("https://i.imgur.com/13mrLGm.png")
     }
     
-    if(!args[0] == "list") message.channel.send('hi ghostblade1')
-    if(!args[1] == "list") message.channel.send('lol you')
-
     
 
 
