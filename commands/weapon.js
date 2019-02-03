@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send("test")
     }
 
-    if(args[1] == "ghostblade1"){
+    if(args[0] == "ghostblade1"){
         message.channel.send("https://i.imgur.com/13mrLGm.png")
     }
     
