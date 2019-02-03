@@ -9,6 +9,7 @@ module.exports.run = (bot, message, args) => {
             color: 0x00FF04,
          }})
     }
+    console.log(args)
 }
 
 module.exports.help = {
