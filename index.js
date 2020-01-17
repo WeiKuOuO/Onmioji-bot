@@ -18,20 +18,16 @@ let index = 0;
 
   //command handler
 	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
+    	const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    	const command = args.shift().toLowerCase();
 	try{
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(bot, message, args);
+    		let commandFile = require(`./commands/${command}.js`);
+    		commandFile.run(bot, message, args);
 	}catch(err){
 		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
-  }
-  if(message.content.indexOf(prefix) !== 0) return;
+  	}
+  	if(message.content.indexOf(prefix) !== 0) return;
 
-}
-
-
-  
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
   bot.channels.filter(c => c.name=="陰陽師機器人資訊").forEach(c => c.bulkDelete("50"))
