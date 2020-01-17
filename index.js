@@ -28,7 +28,7 @@ bot.on("message", async message => {
 		message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
   	}
   	if(message.content.indexOf(prefix) !== 0) return;
-}
+})
        
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
