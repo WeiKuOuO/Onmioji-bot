@@ -16,20 +16,6 @@ bot.commands = new Discord.Collection();
 
 let index = 0;
 
-
-
-bot.on("message", async message => {
-  if (message.author.bot || message.channel.type === 'dm') return;
-  if (message.channel.id == "536784689650991104") {
-    if (message.content == "!join" ) {
-      message.channel.send("成功加入成員!").then(message => message.delete(5000));
-      message.delete().catch(O_o=>{});
-    }else{
-      message.channel.send("請輸入\"!join\"").then(message => message.delete(5000));
-      message.delete().catch(O_o=>{});
-    }
-  }
-
   //command handler
 	if (message.content.toLowerCase().indexOf(prefix) !== 0) return
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -42,28 +28,13 @@ bot.on("message", async message => {
   }
   if(message.content.indexOf(prefix) !== 0) return;
 
-})
-// if(command === "join"){
-//   message.delete().catch(O_o=>{});
-//   const joinmessage = new Discord.RichEmbed()
-//       .setAuthor(bot.user.username)
-//       .setTitle("加入須知")
-//       .setDescription("歡迎來到像素生存2、3、4玩家群組，這裡集結了一些玩家\n希望大家可以多多交流")
-//       .setThumbnail("https://i.imgur.com/ONd2mYc.png")
-//       .setColor(0x00FF04)
-//       .addField("規則","\`\`\`fix\n來到這裡須具備的就是基本的道德和最低限度的法律，請保有自己的風度\`\`\`", true)
-//       .addField("如何加入?",`\`\`\`xl\n只需打上!join驗證，為了確保我們的玩家都不是機器人\`\`\`` , true)
-//       .addField("最後" ,`\`\`\`diff\n- 希望大家都可以在這個群組過得開心，祝大家天皇都重好東西^^\`\`\`` , true)
-
-//   bot.channels.filter(c => c.name === "加入規則").forEach(c => c.send(joinmessage));
-
-
+}
 
 
   
 bot.on("ready", async () => {
   console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
-  bot.channels.filter(c => c.name=="像素機器人資訊").forEach(c => c.bulkDelete("50"))
+  bot.channels.filter(c => c.name=="陰陽師機器人資訊").forEach(c => c.bulkDelete("50"))
   const statusmessage = new Discord.RichEmbed()
       .setAuthor(bot.user.username)
       .setTitle("**Bot資訊**")
@@ -80,7 +51,7 @@ bot.on("ready", async () => {
       .addField(":triangular_flag_on_post: 主機平台", `\`\`\`fix\n正在啟動...\`\`\``, true)
       .addField(":ping_pong: Ping", `\`\`\`xl\n偵測中...\`\`\``)
   var statusMessages = [];
-  bot.channels.filter(c => c.name === "像素機器人資訊").forEach(c => c.send(statusmessage).then(m => statusMessages.push(m)));
+  bot.channels.filter(c => c.name === "陰陽師機器人資訊").forEach(c => c.send(statusmessage).then(m => statusMessages.push(m)));
       
   setInterval(function(){
     cpuStat.usagePercent(async function(err){
@@ -138,7 +109,7 @@ bot.on("guildDelete", guild => {
 
 bot.on('ready', function() {
   const statuslist = [
-      `pixel/help | 任何問題請WeiKu#3402 ♪`,
+      `.help | 任何問題請WeiKu#3402 ♪`,
       `機器人製作 | 微苦 ♪`,
   ];
   bot.setInterval(() => {
